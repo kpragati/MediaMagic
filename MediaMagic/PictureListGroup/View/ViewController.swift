@@ -21,7 +21,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         collectionView.register(UINib(nibName: "ImgListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImgListCollectionViewCell")
         
-        postAction()        
+        if  ConnectionCheck.isConnectedToNetwork()
+                      {
+        
+        postAction()
+                        
+        }else
+        {
+            self.showAlert(message: "No Internet Available.")
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

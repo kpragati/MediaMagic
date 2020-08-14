@@ -31,3 +31,65 @@ func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scale
 }
 
 }
+
+extension UIViewController{
+    
+//    func showHUD(){
+//        let progressHUD = MBProgressHUD.showAdded(to: self.view, animated: true)
+//        progressHUD.label.text = "Loading.."
+//        progressHUD.bezelView.color = UIColor.black // Your backgroundcolor
+//        progressHUD.contentColor = UIColor.white
+//
+//    }
+//
+//    func dismissHUD(isAnimated:Bool) {
+//        MBProgressHUD.hide(for: self.view, animated: isAnimated)
+//    }
+    
+    
+    func showAlertCallBack(message : String, result:@escaping (String)->()){
+        let alertController = UIAlertController(title: "Test", message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+            
+            result("1")
+        }
+        
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true, completion: nil)
+        
+        
+        
+    }
+    
+    func showAlert(message : String)
+    {
+        let alertController = UIAlertController(title:  "Test", message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+            //            print("You've pressed OK Button")
+        }
+        
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showAlertWithOption(message : String, result:@escaping (String)->())
+    {
+        let alertController = UIAlertController(title: "Test", message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+            
+            result("1")
+        }
+        
+        let CancelAction = UIAlertAction(title: "No", style: .cancel) { action in
+            
+            result("0")
+        }
+        
+        alertController.addAction(CancelAction)
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+}
